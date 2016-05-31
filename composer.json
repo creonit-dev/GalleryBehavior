@@ -1,0 +1,15 @@
+{
+  "name": "creonit/propel-gallery-behavior",
+  "type": "propel-behavior",
+  "keywords": [
+    "creonit",
+    "symfony",
+    "propel",
+    "behavior"
+  ],
+  "extra": {
+    "name": "gallery",
+    "class": "Creonit\\PropelBehaviorBundle\\Gallery\\GalleryBehavior"
+  },
+  "license": "GNU GPLv3"
+}
