@@ -9,7 +9,12 @@
   ],
   "extra": {
     "name": "gallery",
-    "class": "Creonit\\PropelBehaviorBundle\\Gallery\\GalleryBehavior"
+    "class": "Creonit\\PropelGalleryBehavior\\GalleryBehavior"
   },
-  "license": "GNU GPLv3"
+  "license": "GNU GPLv3",
+  "autoload": {
+    "psr-4": {
+      "Creonit\\PropelGalleryBehavior\\": ""
+    }
+  }
 }
