@@ -8,12 +8,15 @@ use Propel\Generator\Model\ForeignKey;
 class GalleryBehavior extends Behavior
 {
 
-    public function modifyTable()
+    protected $parameters = [
+        'parameter' => 'gallery_id',
+    ];
+
+    protected function addGalleryColumn($columnName)
     {
         $table = $this->getTable();
-
         $table->addColumn([
-            'name' => 'gallery_id',
+            'name' => $columnName,
             'type' => 'integer'
         ]);
 
@@ -23,9 +26,16 @@ class GalleryBehavior extends Behavior
         $fk->setDefaultJoin('LEFT JOIN');
         $fk->setOnDelete(ForeignKey::SETNULL);
         $fk->setOnUpdate(ForeignKey::CASCADE);
-        $fk->addReference('gallery_id', 'id');
+        $fk->addReference($columnName, 'id');
         $table->addForeignKey($fk);
+    }
 
+    public function modifyTable()
+    {
+        $columns = explode(',', $this->getParameter('parameter'));
+        foreach ($columns as $column) {
+            $this->addGalleryColumn(trim($column));
+        }
     }
 
 }
